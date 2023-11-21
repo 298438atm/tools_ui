@@ -6,18 +6,24 @@
   <el-select
     :value="value"
     :filter-method="selfFilter"
-    filterable
+    :filterable="filterable"
+    :clearable="clearable"
+    :noDataText="emptyText"
     v-bind="$attrs"
     v-on="$listeners"
-    ref="elSelectRef"
+    ref="MuchSelect"
     @remove-tag="removeTag"
     @change="selectChange"
   >
+    <template v-for="(value, name) in $slots" #[name]>
+      <slot :name="name"> </slot>
+    </template>
     <el-option
       v-for="item in showOptions"
-      :key="item[selectValue]"
-      :value="item[selectValue]"
-      :label="item[selectLabel]"
+      :key="item[optionValue]"
+      :value="item[optionValue]"
+      :label="item[optionLabel]"
+      :disabled="optionDisabled"
     ></el-option>
     <span ref="endOption"></span>
   </el-select>
@@ -26,6 +32,7 @@
 <script>
 export default {
   name: "MuchSelect",
+  npmUp: true,
   props: {
     value: null,
     // 接口拿到的所有数据
@@ -34,14 +41,19 @@ export default {
       default: () => [],
     },
     // 下拉label
-    selectLabel: {
+    optionLabel: {
       type: String,
       default: "label",
     },
     // 用例进行存储的字段
-    selectValue: {
+    optionValue: {
       type: String,
       default: "value",
+    },
+    // 选项禁用
+    optionDisabled: {
+      type: Boolean,
+      default: false,
     },
     // 第一次展示的条数
     showListNum: {
@@ -53,6 +65,11 @@ export default {
       type: Number,
       default: 20,
     },
+    // // 无数据时的文本
+    // noDataText: {
+    //   type: String,
+    //   default: "无1数据",
+    // },
   },
   data() {
     return {
@@ -74,9 +91,8 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      // console.log(this.$refs.elSelectRef)
       this.endEle = this.$refs.endOption
-      this.createObserver()
+      this.endEle ? this.createObserver() : null
     })
   },
   beforeDestroy() {
@@ -86,6 +102,24 @@ export default {
     curLength() {
       return this.showOptions.length
     },
+    optionsLength() {
+      return this.options.length
+    },
+    filterable() {
+      return this.$attrs.filterable === false ? false : true
+    },
+    clearable() {
+      return this.$attrs.clearable === false ? false : true
+    },
+    // 没有数据或者没有查询到数据的时候的文本展示
+    emptyText() {
+      // 开启查询且原始列表有值且展示列表无数据则表示没有筛选出数据
+      if (this.filterable && this.optionsLength > 0 && this.curLength === 0) {
+        return this.$attrs.noMatchText || this.$attrs.noDataText
+      } else {
+        return this.$attrs.noDataText
+      }
+    },
   },
   methods: {
     // 初始化下拉列表
@@ -93,12 +127,13 @@ export default {
       this.isFilter = false
       this.filterOption = []
       if (this.value) {
-        if (Array.isArray(this.value) && this.value.length > 0) {
+        // 如果是多选且有值需要回显
+        if (this.$attrs.multiple && this.value.length > 0) {
           let ids = []
           let optionLength = this.copyOriginalList.length
           for (let index = 0; index < optionLength; index++) {
             const item = this.copyOriginalList[index]
-            if (this.value.includes(item[this.selectValue])) {
+            if (this.value.includes(item[this.optionValue])) {
               ids.push(index)
             }
             if (ids.length === optionLength) {
@@ -114,7 +149,7 @@ export default {
           })
         } else if (["string", "number"].includes(typeof this.val)) {
           let index = this.copyOriginalList.findIndex(
-            (item) => item[this.selectValue] === this.value
+            (item) => item[this.optionValue] === this.value
           )
           if (index >= 0) {
             this.copyOriginalList.splice(
@@ -157,12 +192,15 @@ export default {
         this.filterOption = []
       }
       // 如果需要使用filterMethod属性自定义搜索，需要返回一个值作为搜索后的结果接收。
-      if (typeof this.$attrs.filterMethod === "function") {
-        this.filterOption = this.$attrs.filterMethod(val)
+      if (typeof this.$attrs["filter-method"] === "function") {
+        this.filterOption = this.$attrs["filter-method"](
+          val,
+          this.copyOriginalList
+        )
       } else {
         // 默认按照输入的文本进行过滤
         this.filterOption = this.copyOriginalList.filter((item) =>
-          item[this.selectLabel].includes(val)
+          item[this.optionLabel].includes(val)
         )
       }
       this.showOptions = this.filterOption.slice(0, this.showListNum)
@@ -184,10 +222,10 @@ export default {
     // 多选模式下的移除操作
     removeTag(val) {
       let oldIndex = this.options.findIndex(
-        (item) => item[this.selectValue] === val
+        (item) => item[this.optionValue] === val
       )
       let newIndex = this.copyOriginalList.findIndex(
-        (item) => item[this.selectValue] === val
+        (item) => item[this.optionValue] === val
       )
       this.copyOriginalList.splice(
         oldIndex,

@@ -16,5 +16,6 @@ module.exports = {
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
     semi: "off",
     quotes: "off",
+    "vue/multi-word-component-names": "off",
   },
 }

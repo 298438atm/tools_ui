@@ -1,0 +1,33 @@
+pre {
+  display: block;
+  font-family: Menlo, Monaco, Consolas, Courier, monospace;
+  font-size: 12px;
+  padding: 18px 24px;
+  background-color: #fafafa;
+  border: 1px solid #eaeefb;
+  margin-bottom: 25px;
+  border-radius: 4px;
+  -webkit-font-smoothing: auto;
+}
+code {
+  display: inline-block;
+  margin: 0 2px;
+  background-color: #f9fafc;
+  padding: 4px;
+  border: 1px solid #eaeefb;
+  border-radius: 4px;
+  font-size: 12px;
+}
+p {
+  font-size: 14px;
+  color: #5e6d82;
+}
+
+pre {
+  font-size: 12px;
+}
+
+.el-link {
+  display: inline-block;
+  margin: -2px 4px 0 4px;
+}

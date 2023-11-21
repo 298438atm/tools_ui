@@ -1,19 +1,29 @@
-const components = []
-// const requireAll = require.context("@/components", true, /\.vue$/)
-// const modulList = requireAll.keys().map((item) => requireAll(item))
-// modulList.forEach(({ default: vm }) => {
-//   components.push(vm)
-// })
-import MuchSelect from "./MuchSelect/index.vue"
-components.push(MuchSelect)
+let components = []
+const requireAll = require.context("@/components", true, /index\.vue$/)
+const modulList = requireAll.keys().map((item) => requireAll(item))
+modulList.forEach(({ default: vm }) => {
+  vm.npmUp ? components.push(vm) : null
+})
+
+// 全局引入
 const install = function (Vue) {
   // 遍历组件列表并注册全局组件
   components.forEach((component) => {
-    Vue.component("Cl" + component.name, component) //component.name 此处使用到组件vue文件中的 name 属性
+    //component.name 此处使用到组件vue文件中的 name 属性
+    Vue.component("Cl" + component.name, component)
   })
 }
 
-if (typeof window !== "undefined" && window.Vue) {
-  install(window.Vue)
+let exportData = {
+  install,
 }
-export default { install, ...components }
+
+// 适配单个引入
+components.forEach((component) => {
+  component.install = function (Vue) {
+    Vue.component("Cl" + component.name, component)
+  }
+  exportData[component.name] = component
+})
+
+export default exportData
