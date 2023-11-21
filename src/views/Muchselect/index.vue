@@ -140,22 +140,12 @@ export default {
     }
   },
   created() {
-    // for (let index = 0; index < 100000; index++) {
-    //   this.options.push({
-    //     label: `我说第${index + 1}条数据`,
-    //     value: index + 1,
-    //   })
-    // }
-    this.options = [
-      {
-        label: "true",
-        value: true,
-      },
-      {
-        label: "false",
-        value: false,
-      },
-    ]
+    for (let index = 0; index < 100000; index++) {
+      this.options.push({
+        label: `我说第${index + 1}条数据`,
+        value: index + 1,
+      })
+    }
   },
   mounted() {},
   methods: {},
