@@ -22,12 +22,12 @@ const routes = [
         meta: { title: "长下拉数据" },
         name: "Muchselect",
       },
-      // {
-      //   path: "/IconSelectDoc",
-      //   component: () => import("@/views/IconSelectDoc"),
-      //   meta: { title: "图标下拉" },
-      //   name: "IconSelectDoc",
-      // },
+      {
+        path: "/IconSelectDoc",
+        component: () => import("@/views/IconSelectDoc"),
+        meta: { title: "图标下拉" },
+        name: "IconSelectDoc",
+      },
     ],
   },
 ]

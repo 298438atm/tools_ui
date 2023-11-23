@@ -1,28 +1,28 @@
 <template>
   <el-dropdown ref="dropdown" trigger="click" hide-on-click>
     <el-input
-      v-model="localIcon"
-      clearable
+      v-model="iconModel"
+      :clearable="clearable"
       :placeholder="$attrs.placeholder || '请选择图标'"
     >
       <!-- 图标展示 -->
-      <template
-        :slot="showSlot"
-        v-if="['prepend', 'append'].includes(showSlot) && localIcon && iconShow"
-      >
-        <i :class="localIcon"></i>
+      <template :slot="showSlot" v-if="iconModel">
+        <i
+          :class="[iconModel, isElemenUiIcon(iconModel) ? '' : 'iconfont']"
+          class="cl_icon_select"
+        ></i>
       </template>
     </el-input>
     <el-dropdown-menu slot="dropdown" class="icon_box">
       <ul :style="{ width: selectWidth }">
         <li
-          v-for="item in icons"
-          :key="item.icon"
-          @click="iconSelected(item.icon)"
-          :class="{ active: item.icon === localIcon }"
+          v-for="iconName in icons"
+          :key="iconName"
+          @click="iconSelected(iconName)"
+          :class="{ active: iconName === iconModel }"
         >
           <i
-            :class="[item.icon, iconType === 'iconfont' ? 'fonticon' : '']"
+            :class="[iconName, isElemenUiIcon(iconName) ? '' : 'iconfont']"
           ></i>
         </li>
       </ul>
@@ -47,15 +47,10 @@ export default {
     // 图标类型
     iconType: {
       type: String,
-      default: "elemetUi",
+      default: "elemet-ui",
     },
-    iconShow: {
-      type: Boolean,
-      default: true,
-    },
-    // 图标显示方向
     showSlot: {
-      type: String,
+      type: [String, Boolean],
       default: "prepend",
     },
     fontClassUrlType: {
@@ -77,7 +72,10 @@ export default {
     event: "updateModelValue",
   },
   computed: {
-    localIcon: {
+    clearable() {
+      return this.$attrs.clearable === false ? false : true
+    },
+    iconModel: {
       get() {
         return this.modelValue
       },
@@ -95,8 +93,13 @@ export default {
     this.linkEleToggle()
   },
   methods: {
+    // 判断是否是elementui的icon
+    isElemenUiIcon(iconName) {
+      console.log(iconName, "iconName")
+      return iconName.slice(0, 7) === "el-icon"
+    },
     iconSelected(icon) {
-      this.localIcon = icon
+      this.iconModel = icon
       this.$refs.dropdown.visible = false
     },
     linkEleToggle(type) {
@@ -119,6 +122,15 @@ export default {
           this.$nextTick(() => {
             this.linkEleToggle("create")
           })
+        }
+      },
+    },
+    iconList: {
+      deep: true,
+      immediate: true,
+      handler(newV) {
+        if (newV.length > 0) {
+          this.icons = newV
         }
       },
     },
@@ -161,5 +173,24 @@ ul {
     background-color: #409eff;
     color: #fff;
   }
+}
+/deep/ .el-input__prefix {
+  left: 0;
+}
+/deep/ .el-input__prefix,
+/deep/ .el-input__suffix {
+  width: 30px;
+  i:not(.el-input__clear) {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .el-input__clear {
+    line-height: 3 !important;
+  }
+}
+.el-input:hover /deep/ .el-input__suffix .cl_icon_select {
+  display: none;
 }
 </style>
