@@ -9,7 +9,7 @@
     "npmUp": "vue-cli-service build --target lib ./src/components/index.js --name tools_ui --dest tools_ui"
   },
   "dependencies": {
-    "@code_life/tools_ui": "^1.0.3",
+    "@code_life/tools_ui": "^1.0.5",
     "core-js": "^3.8.3",
     "element-ui": "^2.4.5",
     "vue": "^2.6.14",

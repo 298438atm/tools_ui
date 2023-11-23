@@ -3,7 +3,7 @@ import App from "./App.vue"
 import router from "./router"
 import "./plugins/element.js"
 
-import tools_ui from "./components/index"
+import tools_ui from "@code_life/tools_ui"
 import customCom from "./components/Custom"
 
 Vue.use(tools_ui)
