@@ -30,7 +30,7 @@
         >
       </template>
       <template #codeShow>
-        <pre v-highlightjs>
+        <pre>
           {{ code2 }}
         </pre>
       </template>
