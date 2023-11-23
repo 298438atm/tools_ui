@@ -34,7 +34,7 @@
 import iconData from "./iconData.js"
 export default {
   name: "ClIconSelect",
-  npmUp: true,
+  npmUp: false,
   props: {
     modelValue: {
       type: String,
