@@ -2,8 +2,7 @@
  * 函数名称
  * @param {Vm} currentVm - 当前vue组件实例
  */
-export function dispatch(currentVm) {
-  let componentName = currentVm.$options.name
+export function dispatch(currentVm, componentName) {
   let parentVm = currentVm.$parent
   let refList = checkRefs(parentVm, componentName)
   while (!refList && parentVm) {

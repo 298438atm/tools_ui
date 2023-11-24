@@ -1,1122 +1,282 @@
 export default [
-  {
-    icon: "el-icon-platform-eleme",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-eleme",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-delete-solid",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-delete",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-s-tools",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-setting",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-user-solid",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-user",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-phone",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-phone-outline",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-more",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-more-outline",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-star-on",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-star-off",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-s-goods",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-goods",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-warning",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-warning-outline",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-question",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-info",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-remove",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-circle-plus",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-success",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-error",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-zoom-in",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-zoom-out",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-remove-outline",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-circle-plus-outline",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-circle-check",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-circle-close",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-s-help",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-help",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-minus",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-plus",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-check",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-close",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-picture",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-picture-outline",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-picture-outline-round",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-upload",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-upload2",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-download",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-camera-solid",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-camera",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-video-camera-solid",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-video-camera",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-message-solid",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-bell",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-s-cooperation",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-s-order",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-s-platform",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-s-fold",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-s-unfold",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-s-operation",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-s-promotion",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-s-home",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-s-release",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-s-ticket",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-s-management",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-s-open",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-s-shop",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-s-marketing",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-s-flag",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-s-comment",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-s-finance",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-s-claim",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-s-custom",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-s-opportunity",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-s-data",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-s-check",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-s-grid",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-menu",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-share",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-d-caret",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-caret-left",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-caret-right",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-caret-bottom",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-caret-top",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-bottom-left",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-bottom-right",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-back",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-right",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-bottom",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-top",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-top-left",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-top-right",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-arrow-left",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-arrow-right",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-arrow-down",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-arrow-up",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-d-arrow-left",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-d-arrow-right",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-video-pause",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-video-play",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-refresh",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-refresh-right",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-refresh-left",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-finished",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-sort",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-sort-up",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-sort-down",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-rank",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-loading",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-view",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-c-scale-to-original",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-date",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-edit",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-edit-outline",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-folder",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-folder-opened",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-folder-add",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-folder-remove",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-folder-delete",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-folder-checked",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-tickets",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-document-remove",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-document-delete",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-document-copy",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-document-checked",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-document",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-document-add",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-printer",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-paperclip",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-takeaway-box",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-search",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-monitor",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-attract",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-mobile",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-scissors",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-umbrella",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-headset",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-brush",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-mouse",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-coordinate",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-magic-stick",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-reading",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-data-line",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-data-board",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-pie-chart",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-data-analysis",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-collection-tag",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-film",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-suitcase",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-suitcase-1",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-receiving",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-collection",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-files",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-notebook-1",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-notebook-2",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-toilet-paper",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-office-building",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-school",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-table-lamp",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-house",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-no-smoking",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-smoking",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-shopping-cart-full",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-shopping-cart-1",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-shopping-cart-2",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-shopping-bag-1",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-shopping-bag-2",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-sold-out",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-sell",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-present",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-box",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-bank-card",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-money",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-coin",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-wallet",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-discount",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-price-tag",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-news",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-guide",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-male",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-female",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-thumb",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-cpu",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-link",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-connection",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-open",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-turn-off",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-set-up",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-chat-round",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-chat-line-round",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-chat-square",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-chat-dot-round",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-chat-dot-square",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-chat-line-square",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-message",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-postcard",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-position",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-turn-off-microphone",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-microphone",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-close-notification",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-bangzhu",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-time",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-odometer",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-crop",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-aim",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-switch-button",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-full-screen",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-copy-document",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-mic",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-stopwatch",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-medal-1",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-medal",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-trophy",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-trophy-1",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-first-aid-kit",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-discover",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-place",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-location",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-location-outline",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-location-information",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-add-location",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-delete-location",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-map-location",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-alarm-clock",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-timer",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-watch-1",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-watch",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-lock",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-unlock",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-key",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-service",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-mobile-phone",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-bicycle",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-truck",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-ship",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-basketball",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-football",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-soccer",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-baseball",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-wind-power",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-light-rain",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-lightning",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-heavy-rain",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-sunrise",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-sunrise-1",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-sunset",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-sunny",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-cloudy",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-partly-cloudy",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-cloudy-and-sunny",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-moon",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-moon-night",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-dish",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-dish-1",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-food",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-chicken",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-fork-spoon",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-knife-fork",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-burger",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-tableware",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-sugar",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-dessert",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-ice-cream",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-hot-water",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-water-cup",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-coffee-cup",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-cold-drink",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-goblet",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-goblet-full",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-goblet-square",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-goblet-square-full",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-refrigerator",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-grape",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-watermelon",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-cherry",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-apple",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-pear",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-orange",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-coffee",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-ice-tea",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-ice-drink",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-milk-tea",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-potato-strips",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-lollipop",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-ice-cream-square",
-    type: "element-ui",
-  },
-  {
-    icon: "el-icon-ice-cream-round",
-    type: "element-ui",
-  },
+  "el-icon-platform-eleme",
+  "el-icon-eleme",
+  "el-icon-delete-solid",
+  "el-icon-delete",
+  "el-icon-s-tools",
+  "el-icon-setting",
+  "el-icon-user-solid",
+  "el-icon-user",
+  "el-icon-phone",
+  "el-icon-phone-outline",
+  "el-icon-more",
+  "el-icon-more-outline",
+  "el-icon-star-on",
+  "el-icon-star-off",
+  "el-icon-s-goods",
+  "el-icon-goods",
+  "el-icon-warning",
+  "el-icon-warning-outline",
+  "el-icon-question",
+  "el-icon-info",
+  "el-icon-remove",
+  "el-icon-circle-plus",
+  "el-icon-success",
+  "el-icon-error",
+  "el-icon-zoom-in",
+  "el-icon-zoom-out",
+  "el-icon-remove-outline",
+  "el-icon-circle-plus-outline",
+  "el-icon-circle-check",
+  "el-icon-circle-close",
+  "el-icon-s-help",
+  "el-icon-help",
+  "el-icon-minus",
+  "el-icon-plus",
+  "el-icon-check",
+  "el-icon-close",
+  "el-icon-picture",
+  "el-icon-picture-outline",
+  "el-icon-picture-outline-round",
+  "el-icon-upload",
+  "el-icon-upload2",
+  "el-icon-download",
+  "el-icon-camera-solid",
+  "el-icon-camera",
+  "el-icon-video-camera-solid",
+  "el-icon-video-camera",
+  "el-icon-message-solid",
+  "el-icon-bell",
+  "el-icon-s-cooperation",
+  "el-icon-s-order",
+  "el-icon-s-platform",
+  "el-icon-s-fold",
+  "el-icon-s-unfold",
+  "el-icon-s-operation",
+  "el-icon-s-promotion",
+  "el-icon-s-home",
+  "el-icon-s-release",
+  "el-icon-s-ticket",
+  "el-icon-s-management",
+  "el-icon-s-open",
+  "el-icon-s-shop",
+  "el-icon-s-marketing",
+  "el-icon-s-flag",
+  "el-icon-s-comment",
+  "el-icon-s-finance",
+  "el-icon-s-claim",
+  "el-icon-s-custom",
+  "el-icon-s-opportunity",
+  "el-icon-s-data",
+  "el-icon-s-check",
+  "el-icon-s-grid",
+  "el-icon-menu",
+  "el-icon-share",
+  "el-icon-d-caret",
+  "el-icon-caret-left",
+  "el-icon-caret-right",
+  "el-icon-caret-bottom",
+  "el-icon-caret-top",
+  "el-icon-bottom-left",
+  "el-icon-bottom-right",
+  "el-icon-back",
+  "el-icon-right",
+  "el-icon-bottom",
+  "el-icon-top",
+  "el-icon-top-left",
+  "el-icon-top-right",
+  "el-icon-arrow-left",
+  "el-icon-arrow-right",
+  "el-icon-arrow-down",
+  "el-icon-arrow-up",
+  "el-icon-d-arrow-left",
+  "el-icon-d-arrow-right",
+  "el-icon-video-pause",
+  "el-icon-video-play",
+  "el-icon-refresh",
+  "el-icon-refresh-right",
+  "el-icon-refresh-left",
+  "el-icon-finished",
+  "el-icon-sort",
+  "el-icon-sort-up",
+  "el-icon-sort-down",
+  "el-icon-rank",
+  "el-icon-loading",
+  "el-icon-view",
+  "el-icon-c-scale-to-original",
+  "el-icon-date",
+  "el-icon-edit",
+  "el-icon-edit-outline",
+  "el-icon-folder",
+  "el-icon-folder-opened",
+  "el-icon-folder-add",
+  "el-icon-folder-remove",
+  "el-icon-folder-delete",
+  "el-icon-folder-checked",
+  "el-icon-tickets",
+  "el-icon-document-remove",
+  "el-icon-document-delete",
+  "el-icon-document-copy",
+  "el-icon-document-checked",
+  "el-icon-document",
+  "el-icon-document-add",
+  "el-icon-printer",
+  "el-icon-paperclip",
+  "el-icon-takeaway-box",
+  "el-icon-search",
+  "el-icon-monitor",
+  "el-icon-attract",
+  "el-icon-mobile",
+  "el-icon-scissors",
+  "el-icon-umbrella",
+  "el-icon-headset",
+  "el-icon-brush",
+  "el-icon-mouse",
+  "el-icon-coordinate",
+  "el-icon-magic-stick",
+  "el-icon-reading",
+  "el-icon-data-line",
+  "el-icon-data-board",
+  "el-icon-pie-chart",
+  "el-icon-data-analysis",
+  "el-icon-collection-tag",
+  "el-icon-film",
+  "el-icon-suitcase",
+  "el-icon-suitcase-1",
+  "el-icon-receiving",
+  "el-icon-collection",
+  "el-icon-files",
+  "el-icon-notebook-1",
+  "el-icon-notebook-2",
+  "el-icon-toilet-paper",
+  "el-icon-office-building",
+  "el-icon-school",
+  "el-icon-table-lamp",
+  "el-icon-house",
+  "el-icon-no-smoking",
+  "el-icon-smoking",
+  "el-icon-shopping-cart-full",
+  "el-icon-shopping-cart-1",
+  "el-icon-shopping-cart-2",
+  "el-icon-shopping-bag-1",
+  "el-icon-shopping-bag-2",
+  "el-icon-sold-out",
+  "el-icon-sell",
+  "el-icon-present",
+  "el-icon-box",
+  "el-icon-bank-card",
+  "el-icon-money",
+  "el-icon-coin",
+  "el-icon-wallet",
+  "el-icon-discount",
+  "el-icon-price-tag",
+  "el-icon-news",
+  "el-icon-guide",
+  "el-icon-male",
+  "el-icon-female",
+  "el-icon-thumb",
+  "el-icon-cpu",
+  "el-icon-link",
+  "el-icon-connection",
+  "el-icon-open",
+  "el-icon-turn-off",
+  "el-icon-set-up",
+  "el-icon-chat-round",
+  "el-icon-chat-line-round",
+  "el-icon-chat-square",
+  "el-icon-chat-dot-round",
+  "el-icon-chat-dot-square",
+  "el-icon-chat-line-square",
+  "el-icon-message",
+  "el-icon-postcard",
+  "el-icon-position",
+  "el-icon-turn-off-microphone",
+  "el-icon-microphone",
+  "el-icon-close-notification",
+  "el-icon-bangzhu",
+  "el-icon-time",
+  "el-icon-odometer",
+  "el-icon-crop",
+  "el-icon-aim",
+  "el-icon-switch-button",
+  "el-icon-full-screen",
+  "el-icon-copy-document",
+  "el-icon-mic",
+  "el-icon-stopwatch",
+  "el-icon-medal-1",
+  "el-icon-medal",
+  "el-icon-trophy",
+  "el-icon-trophy-1",
+  "el-icon-first-aid-kit",
+  "el-icon-discover",
+  "el-icon-place",
+  "el-icon-location",
+  "el-icon-location-outline",
+  "el-icon-location-information",
+  "el-icon-add-location",
+  "el-icon-delete-location",
+  "el-icon-map-location",
+  "el-icon-alarm-clock",
+  "el-icon-timer",
+  "el-icon-watch-1",
+  "el-icon-watch",
+  "el-icon-lock",
+  "el-icon-unlock",
+  "el-icon-key",
+  "el-icon-service",
+  "el-icon-mobile-phone",
+  "el-icon-bicycle",
+  "el-icon-truck",
+  "el-icon-ship",
+  "el-icon-basketball",
+  "el-icon-football",
+  "el-icon-soccer",
+  "el-icon-baseball",
+  "el-icon-wind-power",
+  "el-icon-light-rain",
+  "el-icon-lightning",
+  "el-icon-heavy-rain",
+  "el-icon-sunrise",
+  "el-icon-sunrise-1",
+  "el-icon-sunset",
+  "el-icon-sunny",
+  "el-icon-cloudy",
+  "el-icon-partly-cloudy",
+  "el-icon-cloudy-and-sunny",
+  "el-icon-moon",
+  "el-icon-moon-night",
+  "el-icon-dish",
+  "el-icon-dish-1",
+  "el-icon-food",
+  "el-icon-chicken",
+  "el-icon-fork-spoon",
+  "el-icon-knife-fork",
+  "el-icon-burger",
+  "el-icon-tableware",
+  "el-icon-sugar",
+  "el-icon-dessert",
+  "el-icon-ice-cream",
+  "el-icon-hot-water",
+  "el-icon-water-cup",
+  "el-icon-coffee-cup",
+  "el-icon-cold-drink",
+  "el-icon-goblet",
+  "el-icon-goblet-full",
+  "el-icon-goblet-square",
+  "el-icon-goblet-square-full",
+  "el-icon-refrigerator",
+  "el-icon-grape",
+  "el-icon-watermelon",
+  "el-icon-cherry",
+  "el-icon-apple",
+  "el-icon-pear",
+  "el-icon-orange",
+  "el-icon-coffee",
+  "el-icon-ice-tea",
+  "el-icon-ice-drink",
+  "el-icon-milk-tea",
+  "el-icon-potato-strips",
+  "el-icon-lollipop",
+  "el-icon-ice-cream-square",
+  "el-icon-ice-cream-round",
 ]

@@ -43,7 +43,6 @@
         :showListNum="50"
         :loadListNum="30"
         :options="options"
-        ref="aaaa"
       >
       </ClMuchSelect>
       <template #codeText>
@@ -104,10 +103,6 @@
       type="slot"
       :tableData="slotList"
     ></CustomAttrTable>
-    <h4>不支持的属性</h4>
-    <el-tag type="danger"> 该组件暂不支持绑定对象类型</el-tag>
-    <el-tag type="danger"> 该组件暂不支持远程搜索</el-tag>
-    <el-tag type="danger"> 该组件暂不支持分组操作</el-tag>
   </div>
 </template>
 
@@ -166,11 +161,109 @@ export default {
           default: "value",
         },
         {
+          params: "multiple",
+          des: "是否多选",
+          type: "boolean",
+          select: "true/false",
+          default: "false",
+        },
+        {
+          params: "disabled",
+          des: "某个option选项是否禁用",
+          type: "boolean",
+          select: "true/false",
+          default: "false",
+        },
+        {
+          params: "optionDisabled",
+          des: "是否禁用",
+          type: "boolean",
+          select: "true/false",
+          default: "false",
+        },
+        {
+          params: "size",
+          des: "输入框尺寸",
+          type: "string",
+          select: "medium/small/mini",
+          default: "medium",
+        },
+        {
+          params: "clearable",
+          des: "是否可以清空选项",
+          type: "boolean",
+          select: "true/false",
+          default: "true",
+        },
+        {
+          params: "collapse-tags",
+          des: "多选时是否将选中值按文字的形式展示	",
+          type: "boolean",
+          select: "true/false",
+          default: "false",
+        },
+        {
+          params: "multiple-limit",
+          des: "多选时用户最多可以选择的项目数，为 0 则不限制",
+          type: "number",
+          select: "-",
+          default: "0",
+        },
+        {
+          params: "placeholder",
+          des: "占位符",
+          type: "string",
+          select: "-",
+          default: "请选择",
+        },
+        {
+          params: "filterable",
+          des: "是否可搜索",
+          type: "boolean",
+          select: "true/false",
+          default: "true",
+        },
+        {
           params: "optionDisabled",
           des: "某个option选项是否禁用",
           type: "boolean",
           select: "true/false",
           default: "false",
+        },
+        {
+          params: "allow-create",
+          des: "是否允许用户创建新条目，需配合 filterable 使用",
+          type: "boolean",
+          select: "true/false",
+          default: "false",
+        },
+        {
+          params: "no-match-text",
+          des: "搜索条件无匹配时显示的文字，也可以使用slot='empty'设置",
+          type: "string",
+          select: "-",
+          default: "无匹配数据",
+        },
+        {
+          params: "no-data-text",
+          des: "选项为空时显示的文字，也可以使用slot='empty'设置",
+          type: "string",
+          select: "string",
+          default: "无数据",
+        },
+        {
+          params: "default-first-option",
+          des: "在输入框按下回车，选择第一个匹配项。需配合 filterable 或 remote 使用",
+          type: "boolean",
+          select: "true/false",
+          default: "false",
+        },
+        {
+          params: "popper-append-to-body",
+          des: "是否将弹出框插入至 body 元素。在弹出框的定位出现问题时，可将该属性设置为 false",
+          type: "boolean",
+          select: "true/false",
+          default: "true",
         },
         {
           params: "filter-method",
