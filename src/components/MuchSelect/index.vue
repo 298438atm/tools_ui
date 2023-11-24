@@ -23,7 +23,6 @@
       :key="item[optionValue]"
       :value="item[optionValue]"
       :label="item[optionLabel]"
-      :disabled="optionDisabled"
     >
       <slot name="option" :data="item"></slot>
     </el-option>

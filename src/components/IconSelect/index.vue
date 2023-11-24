@@ -1,36 +1,57 @@
 <template>
-  <el-dropdown ref="dropdown" trigger="click" hide-on-click>
+  <el-dropdown
+    ref="dropdown"
+    :placement="placement"
+    trigger="click"
+    :hide-on-click="hideOnClick"
+    @visible-change="visibleChange"
+    :style="`--color: ${color}`"
+  >
     <el-input
       v-model="iconModel"
+      ref="input"
+      :placeholder="placeholder"
       :clearable="clearable"
-      :placeholder="$attrs.placeholder || '请选择图标'"
+      :disabled="disabled"
+      :size="size"
+      :readonly="false"
+      @focus="inputFocus"
+      @clear="clear"
+      @input="inputIcon"
+      v-on="$listeners"
     >
       <!-- 图标展示 -->
-      <template :slot="showSlot" v-if="iconModel">
+      <template :slot="showSlot" v-if="iconModel && icons.includes(iconModel)">
         <i
           :class="[iconModel, isElemenUiIcon(iconModel) ? '' : 'iconfont']"
           class="cl_icon_select"
         ></i>
       </template>
     </el-input>
-    <el-dropdown-menu slot="dropdown" class="icon_box">
-      <ul :style="{ width: selectWidth }">
-        <li
-          v-for="iconName in icons"
-          :key="iconName"
-          @click="iconSelected(iconName)"
-          :class="{ active: iconName === iconModel }"
+    <el-dropdown-menu slot="dropdown" ref="dropdownMenu">
+      <el-scrollbar>
+        <ul
+          class="icon_ul"
+          :style="{ maxWidth: maxWidth, maxHeight: maxHeight }"
         >
-          <i
-            :class="[iconName, isElemenUiIcon(iconName) ? '' : 'iconfont']"
-          ></i>
-        </li>
-      </ul>
+          <li
+            v-for="iconName in iconFilterList"
+            :key="iconName"
+            @click="iconSelected(iconName)"
+            :class="{ active: iconName === iconModel }"
+          >
+            <i
+              :class="[iconName, isElemenUiIcon(iconName) ? '' : 'iconfont']"
+            ></i>
+          </li>
+        </ul>
+      </el-scrollbar>
     </el-dropdown-menu>
   </el-dropdown>
 </template>
 
 <script>
+import { dispatch } from "@/utils/dispatch.js"
 import iconData from "./iconData.js"
 export default {
   name: "ClIconSelect",
@@ -44,27 +65,73 @@ export default {
       type: Array,
       default: () => [],
     },
-    // 图标类型
-    iconType: {
-      type: String,
-      default: "elemet-ui",
-    },
     showSlot: {
       type: [String, Boolean],
       default: "prepend",
     },
-    fontClassUrlType: {
-      type: String,
-      default: "url",
-    },
-    fontClassUrl: {
-      type: String,
-      default: "http://at.alicdn.com/t/c/font_4340062_umkhqv5at8.css",
-    },
-    // 下拉宽度
-    selectWidth: {
+    // 下拉最大宽度
+    maxWidth: {
       type: String,
       default: "500px",
+    },
+    // 最大高度
+    maxHeight: {
+      type: String,
+      default: "300px",
+    },
+    // 图标颜色
+    color: {
+      type: String,
+      default: "#000",
+    },
+    hoverColor: {
+      type: String,
+      default: "#409eff",
+    },
+    activeColor: {
+      type: String,
+      default: "#fff",
+    },
+    activeBgkColor: {
+      type: String,
+      default: "#409eff",
+    },
+    hoverBgkColor: {
+      type: String,
+      default: "#fff",
+    },
+    filterable: {
+      type: Boolean,
+      default: false,
+    },
+    // input属性
+    selectonly: {
+      type: Boolean,
+      default: true,
+    },
+    placeholder: {
+      type: String,
+      default: "请选择图标",
+    },
+    clearable: {
+      type: Boolean,
+      default: true,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    size: {
+      type: String,
+      default: "medium",
+    },
+    placement: {
+      type: String,
+      default: "bottom-end",
+    },
+    hideOnClick: {
+      type: Boolean,
+      default: true,
     },
   },
   model: {
@@ -72,9 +139,6 @@ export default {
     event: "updateModelValue",
   },
   computed: {
-    clearable() {
-      return this.$attrs.clearable === false ? false : true
-    },
     iconModel: {
       get() {
         return this.modelValue
@@ -83,35 +147,70 @@ export default {
         this.$emit("updateModelValue", newV)
       },
     },
+    iconFilterList() {
+      if (this.filterable && this.iconModel && !this.selectonly) {
+        return this.icons.filter((item) => item.includes(this.iconModel))
+      } else {
+        return this.icons
+      }
+    },
+  },
+  mounted() {
+    dispatch(this, "ClIconSelect")
   },
   data() {
     return {
       icons: iconData,
     }
   },
-  destroyed() {
-    this.linkEleToggle()
-  },
   methods: {
+    inputFocus() {
+      if (this.selectonly) {
+        this.$refs.input.blur()
+      }
+    },
     // 判断是否是elementui的icon
     isElemenUiIcon(iconName) {
-      console.log(iconName, "iconName")
       return iconName.slice(0, 7) === "el-icon"
     },
-    iconSelected(icon) {
-      this.iconModel = icon
-      this.$refs.dropdown.visible = false
-    },
-    linkEleToggle(type) {
-      if (type === "create") {
-        const link = document.createElement("link")
-        link.classList.add("IconSelect")
-        link.rel = "stylesheet"
-        link.href = this.fontClassUrl
-        document.head.appendChild(link)
-      } else {
-        document.head.querySelector(".IconSelect")?.remove()
+    // 图标选中
+    iconSelected(icon = undefined) {
+      if (icon) {
+        this.$emit("selected", icon)
       }
+      this.iconModel = icon
+      if (this.hideOnClick) {
+        this.$refs.dropdown.visible = false
+      }
+    },
+    visibleChange(isShow) {
+      this.$emit("visible-change", isShow)
+      if (isShow) {
+        this.$nextTick(() => {
+          this.iconColorInit()
+        })
+      }
+    },
+    // 搜索后重新布局
+    inputIcon() {
+      if (this.filterable && !this.selectonly) {
+        this.$refs.dropdownMenu.createPopper()
+      }
+    },
+    // 图标颜色定义
+    iconColorInit() {
+      const dropdownMenuEle = this.$refs.dropdown.popperElm
+      if (!dropdownMenuEle) return false
+      dropdownMenuEle.style = `--color: ${this.color};
+      --activeColor: ${this.activeColor};
+      --hoverColor: ${this.hoverColor};
+      --activeBgkColor: ${this.activeBgkColor};
+      --hoverBgkColor: ${this.hoverBgkColor}`
+    },
+    clear() {
+      setTimeout(() => {
+        this.$refs.dropdown.visible = false
+      }, 1)
     },
   },
   watch: {
@@ -120,7 +219,7 @@ export default {
       handler(val) {
         if (val) {
           this.$nextTick(() => {
-            this.linkEleToggle("create")
+            // this.linkEleToggle("create")
           })
         }
       },
@@ -137,19 +236,14 @@ export default {
   },
 }
 </script>
-
 <style lang="less" scoped>
-.icon_box {
-  max-height: 300px;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-ul {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
-  list-style: none;
-  padding: 0;
+.icon_ul {
   margin: 0;
+  padding: 0 5px;
+  max-height: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
 
   li {
     width: 50px;
@@ -157,21 +251,23 @@ ul {
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--color);
   }
   li:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     cursor: pointer;
-    color: #409eff;
+    color: var(--hoverColor) !important;
+    background-color: var(--hoverBgkColor);
   }
   .active {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    background-color: #409eff;
-    color: #fff;
+    background-color: var(--activeBgkColor) !important;
+    color: var(--activeColor) !important;
   }
   .active:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     background-color: #409eff;
-    color: #fff;
+    color: #fff !important;
   }
 }
 /deep/ .el-input__prefix {
@@ -187,10 +283,16 @@ ul {
     transform: translate(-50%, -50%);
   }
   .el-input__clear {
-    line-height: 3 !important;
+    position: absolute;
+    top: 55%;
+    transform: translate(-50%, -50%);
+    left: 50%;
   }
 }
 .el-input:hover /deep/ .el-input__suffix .cl_icon_select {
   display: none;
+}
+.cl_icon_select {
+  color: var(--color) !important;
 }
 </style>

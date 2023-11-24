@@ -26,7 +26,9 @@
       <p>
         很多组件整体依托的是原<code>element-ui</code>改造而成，那么他会有一个基础原组件，
         例如<code>ClMuchSelect</code>的基础原组件就是<code>el-select</code>
-        当你直接使用<code>ref</code>绑定组件时，可以直接拿到基础原组件的实例对象
+        当你直接使用<code>ref</code>绑定组件时，可以直接拿到基础原组件的实例对象。
+        基础原组件的属性和方法也会最大程度保留到现组件当中。若无基础原组件，
+        则<code>ref</code>直接获取到当前组件实例
       </p>
       <pre>{{ code3 }}</pre>
       <p>
@@ -35,16 +37,23 @@
         如不需要可按<code>element-ui</code>文档进行关闭
       </p>
       <p>
-        该文档并不会展示组件的所有属性与方法，
-        只展示部分专属或与<code>element-ui</code>有差异的属性或者方法（有差异的属性或方法会以红色字体展示），
-        若有<code>element-ui</code>的属性或者方法不支持也会在文档底部提醒。
-        其余所有属性和方法的都可参考原<code>element-ui</code>文档使用。
+        该文档展示的属性与方法大都与<code>element-ui</code>一致，
+        有差异的属性或方法会以红色字体展示。
       </p>
 
       <h2>注意</h2>
       <p>
         该ui库<code>element-ui</code>版本为2.15.14，<code>vue</code>版本为2.6.14
       </p>
+      <h2>联系作者</h2>
+      <p>
+        目前该库还不完善，若在使用过程中发现问题可第一事件联系我们，或者有更好的形式以及优化也可以交流！
+      </p>
+      <img
+        src="@/assets/image/wx_qrcode.jpg"
+        alt="联系方式17623643348"
+        width="150"
+      />
     </el-scrollbar>
   </div>
 </template>

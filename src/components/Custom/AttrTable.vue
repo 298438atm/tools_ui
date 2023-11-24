@@ -41,8 +41,8 @@ export default {
       switch (this.type) {
         case "attr":
           return this.attrColumns
-        case "function":
-          return this.funColumns
+        case "method":
+          return this.methodColumns
         case "slot":
           return this.slotColumns
         default:
@@ -61,12 +61,6 @@ export default {
           width: "100px",
         },
         {
-          prop: "name",
-          label: "name",
-          type: "slot",
-          width: "100",
-        },
-        {
           prop: "des",
           label: "说明",
           type: "attr",
@@ -82,7 +76,7 @@ export default {
           prop: "select",
           label: "可选值",
           type: "attr",
-          width: "100",
+          width: "120",
         },
         {
           prop: "default",
@@ -91,7 +85,7 @@ export default {
           width: "100",
         },
       ],
-      funColumns: [
+      methodColumns: [
         {
           prop: "eventName",
           label: "事件名称",
