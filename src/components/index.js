@@ -1,5 +1,5 @@
 let components = []
-const requireAll = require.context("@/components", true, /index\.vue$/)
+const requireAll = require.context('@/components', true, /index\.vue$/)
 const modulList = requireAll.keys().map((item) => requireAll(item))
 modulList.forEach(({ default: vm }) => {
   vm.npmUp ? components.push(vm) : null
@@ -15,7 +15,7 @@ const install = function (Vue) {
 }
 
 let exportData = {
-  install,
+  install
 }
 
 // 适配单个引入

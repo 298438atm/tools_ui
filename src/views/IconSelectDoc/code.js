@@ -13,8 +13,8 @@ export default {
   }
 }
 ` +
-  "<" +
-  "/script>"
+  '<' +
+  '/script>'
 
 export const code2 =
   `
@@ -32,7 +32,7 @@ export default {
   }
 }
 ` +
-  "<" +
+  '<' +
   `/script>
   <style lang="less" scoped>
   @import "../../assets/css/iconfont.css"

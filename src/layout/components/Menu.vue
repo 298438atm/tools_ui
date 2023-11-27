@@ -16,16 +16,16 @@
 
 <script>
 export default {
-  name: "Menu",
+  name: 'Menu',
   data() {
     return {}
   },
   computed: {
     menuList() {
       return this.$router.options.routes[0].children
-    },
+    }
   },
-  created() {},
+  created() {}
 }
 </script>
 

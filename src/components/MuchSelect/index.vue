@@ -31,42 +31,42 @@
 </template>
 
 <script>
-import { dispatch } from "../../utils/dispatch"
+import { dispatch } from '../../utils/dispatch'
 export default {
-  name: "ClMuchSelect",
+  name: 'ClMuchSelect',
   npmUp: true,
   props: {
     value: null,
     // 接口拿到的所有数据
     options: {
       type: Array,
-      default: () => [],
+      default: () => []
     },
     // 下拉label
     optionLabel: {
       type: String,
-      default: "label",
+      default: 'label'
     },
     // 用例进行存储的字段
     optionValue: {
       type: String,
-      default: "value",
+      default: 'value'
     },
     // 选项禁用
     optionDisabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     // 第一次展示的条数
     showListNum: {
       type: Number,
-      default: 20,
+      default: 20
     },
     // 一次加载的条数
     loadListNum: {
       type: Number,
-      default: 20,
-    },
+      default: 20
+    }
   },
   data() {
     return {
@@ -84,7 +84,7 @@ export default {
       observer: null,
       // 是否处于查询
       isFilter: false,
-      ClMuchSelect: null,
+      ClMuchSelect: null
     }
   },
   mounted() {
@@ -122,7 +122,7 @@ export default {
       } else {
         return this.$attrs.noDataText
       }
-    },
+    }
   },
   methods: {
     // 初始化下拉列表
@@ -151,7 +151,7 @@ export default {
             )
           })
         } else if (
-          ["string", "number", "boolean"].includes(typeof this.value)
+          ['string', 'number', 'boolean'].includes(typeof this.value)
         ) {
           let index = this.copyOriginalList.findIndex(
             (item) => item[this.optionValue] === this.value
@@ -185,7 +185,7 @@ export default {
       }
     },
     selectChange(val) {
-      this.$emit("input", val)
+      this.$emit('input', val)
     },
     // 重写过滤方法
     selfFilter(val) {
@@ -197,8 +197,8 @@ export default {
         this.filterOption = []
       }
       // 如果需要使用filterMethod属性自定义搜索，需要返回一个值作为搜索后的结果接收。
-      if (typeof this.$attrs["filter-method"] === "function") {
-        this.filterOption = this.$attrs["filter-method"](
+      if (typeof this.$attrs['filter-method'] === 'function') {
+        this.filterOption = this.$attrs['filter-method'](
           val,
           this.copyOriginalList
         )
@@ -243,7 +243,7 @@ export default {
       this.$nextTick(() => {
         this.initList()
       })
-    },
+    }
   },
   watch: {
     options: {
@@ -253,8 +253,8 @@ export default {
         // 将原生数据拷贝到本地
         this.copyOriginalList = JSON.parse(JSON.stringify(value))
         this.initList()
-      },
-    },
-  },
+      }
+    }
+  }
 }
 </script>

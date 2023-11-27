@@ -35,3 +35,7 @@ pre {
 .el-tag {
   margin: 0 5px 5px 0;
 }
+
+.del_btn_text {
+  color: #f56c6c !important;
+}

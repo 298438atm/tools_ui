@@ -51,92 +51,92 @@
 </template>
 
 <script>
-import { dispatch } from "@/utils/dispatch.js"
-import iconData from "./iconData.js"
+import { dispatch } from '@/utils/dispatch.js'
+import iconData from './iconData.js'
 export default {
-  name: "ClIconSelect",
+  name: 'ClIconSelect',
   npmUp: true,
   props: {
     modelValue: {
       type: String,
-      default: "",
+      default: ''
     },
     iconList: {
       type: Array,
-      default: () => [],
+      default: () => []
     },
     showSlot: {
       type: [String, Boolean],
-      default: "prepend",
+      default: 'prepend'
     },
     // 下拉最大宽度
     maxWidth: {
       type: String,
-      default: "500px",
+      default: '500px'
     },
     // 最大高度
     maxHeight: {
       type: String,
-      default: "300px",
+      default: '300px'
     },
     // 图标颜色
     color: {
       type: String,
-      default: "#000",
+      default: '#000'
     },
     hoverColor: {
       type: String,
-      default: "#409eff",
+      default: '#409eff'
     },
     activeColor: {
       type: String,
-      default: "#fff",
+      default: '#fff'
     },
     activeBgkColor: {
       type: String,
-      default: "#409eff",
+      default: '#409eff'
     },
     hoverBgkColor: {
       type: String,
-      default: "#fff",
+      default: '#fff'
     },
     filterable: {
       type: Boolean,
-      default: false,
+      default: false
     },
     // input属性
     selectonly: {
       type: Boolean,
-      default: true,
+      default: true
     },
     placeholder: {
       type: String,
-      default: "请选择图标",
+      default: '请选择图标'
     },
     clearable: {
       type: Boolean,
-      default: true,
+      default: true
     },
     disabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     size: {
       type: String,
-      default: "medium",
+      default: 'medium'
     },
     placement: {
       type: String,
-      default: "bottom-end",
+      default: 'bottom-end'
     },
     hideOnClick: {
       type: Boolean,
-      default: true,
-    },
+      default: true
+    }
   },
   model: {
-    prop: "modelValue",
-    event: "updateModelValue",
+    prop: 'modelValue',
+    event: 'updateModelValue'
   },
   computed: {
     iconModel: {
@@ -144,8 +144,8 @@ export default {
         return this.modelValue
       },
       set(newV) {
-        this.$emit("updateModelValue", newV)
-      },
+        this.$emit('updateModelValue', newV)
+      }
     },
     iconFilterList() {
       if (this.filterable && this.iconModel && !this.selectonly) {
@@ -153,17 +153,35 @@ export default {
       } else {
         return this.icons
       }
-    },
+    }
   },
   mounted() {
-    dispatch(this, "ClIconSelect")
+    // 如是自定义图标并且有非elementui图标，则认为包含iconfont图标，进行字体初始化
+    if (
+      this.iconList.length > 0 &&
+      this.iconList.some((item) => item.includes('el-icon-'))
+    ) {
+      this.initIconfont()
+    }
+    dispatch(this, 'ClIconSelect')
   },
   data() {
     return {
-      icons: iconData,
+      icons: iconData
     }
   },
   methods: {
+    // iconfont的fontclass引入，只有在使用图标的时候才会去请求字体
+    // 所以提前定义i标签优先拿到字体，避免图标闪烁
+    initIconfont() {
+      let iEle = document.createElement('i')
+      iEle.classList.add('iconfont')
+      document.body.append(iEle)
+      const timer = setTimeout(() => {
+        iEle.remove()
+        clearTimeout(timer)
+      }, 100)
+    },
     inputFocus() {
       if (this.selectonly) {
         this.$refs.input.blur()
@@ -171,12 +189,12 @@ export default {
     },
     // 判断是否是elementui的icon
     isElemenUiIcon(iconName) {
-      return iconName.slice(0, 7) === "el-icon"
+      return iconName.slice(0, 7) === 'el-icon'
     },
     // 图标选中
     iconSelected(icon = undefined) {
       if (icon) {
-        this.$emit("selected", icon)
+        this.$emit('selected', icon)
       }
       this.iconModel = icon
       if (this.hideOnClick) {
@@ -184,7 +202,7 @@ export default {
       }
     },
     visibleChange(isShow) {
-      this.$emit("visible-change", isShow)
+      this.$emit('visible-change', isShow)
       if (isShow) {
         this.$nextTick(() => {
           this.iconColorInit()
@@ -211,7 +229,7 @@ export default {
       setTimeout(() => {
         this.$refs.dropdown.visible = false
       }, 1)
-    },
+    }
   },
   watch: {
     fontClassUrl: {
@@ -222,7 +240,7 @@ export default {
             // this.linkEleToggle("create")
           })
         }
-      },
+      }
     },
     iconList: {
       deep: true,
@@ -231,9 +249,9 @@ export default {
         if (newV.length > 0) {
           this.icons = newV
         }
-      },
-    },
-  },
+      }
+    }
+  }
 }
 </script>
 <style lang="less" scoped>

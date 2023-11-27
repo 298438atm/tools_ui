@@ -6,12 +6,12 @@
 
 <script>
 export default {
-  name: "App",
+  name: 'App'
 }
 </script>
 
 <style>
-@import url("../src/assets/css/config.css");
+@import url('../src/assets/css/config.css');
 body {
   margin: 0;
   padding: 0;

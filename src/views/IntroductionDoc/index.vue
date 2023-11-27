@@ -60,7 +60,7 @@
 
 <script>
 export default {
-  name: "Introduction",
+  name: 'Introduction',
   data() {
     return {
       code: `
@@ -84,10 +84,10 @@ export default {
   }
 }
 ` +
-        "<" +
-        "/script>",
+        '<' +
+        '/script>'
     }
-  },
+  }
 }
 </script>
 

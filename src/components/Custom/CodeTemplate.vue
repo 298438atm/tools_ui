@@ -15,25 +15,25 @@
       @click="hide = !hide"
     >
       <i :class="hide ? 'el-icon-caret-bottom' : 'el-icon-caret-top'"></i>
-      {{ hide ? "显示代码" : "隐藏代码" }}
+      {{ hide ? '显示代码' : '隐藏代码' }}
     </div>
   </el-card>
 </template>
 
 <script>
 export default {
-  name: "CodeTemplate",
+  name: 'CodeTemplate',
   props: {
     hideToggleBtn: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   data() {
     return {
-      hide: true,
+      hide: true
     }
-  },
+  }
 }
 </script>
 

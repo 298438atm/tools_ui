@@ -21,106 +21,106 @@
 
 <script>
 export default {
-  name: "CustomAttrTable",
+  name: 'CustomAttrTable',
   props: {
     type: {
       type: String,
-      default: "attr",
+      default: 'attr'
     },
     tableData: {
       type: Array,
-      default: () => [],
+      default: () => []
     },
     typeShow: {
       type: String,
-      default: "属性列表",
-    },
+      default: '属性列表'
+    }
   },
   computed: {
     showColumns() {
       switch (this.type) {
-        case "attr":
+        case 'attr':
           return this.attrColumns
-        case "method":
+        case 'method':
           return this.methodColumns
-        case "slot":
+        case 'slot':
           return this.slotColumns
         default:
           break
       }
       return this.columns.filter((item) => this.type === item.type)
-    },
+    }
   },
   data() {
     return {
       attrColumns: [
         {
-          prop: "params",
-          label: "参数",
-          type: "attr",
-          width: "100px",
+          prop: 'params',
+          label: '参数',
+          type: 'attr',
+          width: '100px'
         },
         {
-          prop: "des",
-          label: "说明",
-          type: "attr",
-          width: "200",
+          prop: 'des',
+          label: '说明',
+          type: 'attr',
+          width: '200'
         },
         {
-          prop: "type",
-          label: "类型",
-          type: "attr",
-          width: "100",
+          prop: 'type',
+          label: '类型',
+          type: 'attr',
+          width: '100'
         },
         {
-          prop: "select",
-          label: "可选值",
-          type: "attr",
-          width: "120",
+          prop: 'select',
+          label: '可选值',
+          type: 'attr',
+          width: '120'
         },
         {
-          prop: "default",
-          label: "默认值",
-          type: "attr",
-          width: "100",
-        },
+          prop: 'default',
+          label: '默认值',
+          type: 'attr',
+          width: '100'
+        }
       ],
       methodColumns: [
         {
-          prop: "eventName",
-          label: "事件名称",
-          width: "100",
+          prop: 'eventName',
+          label: '事件名称',
+          width: '100'
         },
         {
-          prop: "des",
-          label: "说明",
-          width: "200",
+          prop: 'des',
+          label: '说明',
+          width: '200'
         },
         {
-          prop: "cbParams",
-          label: "参数",
-          width: "200",
-        },
+          prop: 'cbParams',
+          label: '参数',
+          width: '200'
+        }
       ],
       slotColumns: [
         {
-          prop: "slotName",
-          label: "插槽名称",
-          width: "100",
+          prop: 'slotName',
+          label: '插槽名称',
+          width: '100'
         },
         {
-          prop: "des",
-          label: "说明",
-          width: "200",
+          prop: 'des',
+          label: '说明',
+          width: '200'
         },
         {
-          prop: "slotData",
-          label: "作用域插槽数据",
-          width: "200",
-        },
-      ],
+          prop: 'slotData',
+          label: '作用域插槽数据',
+          width: '200'
+        }
+      ]
     }
-  },
+  }
 }
 </script>
 

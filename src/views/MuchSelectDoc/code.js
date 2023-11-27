@@ -33,8 +33,8 @@ export default {
   },
 }
 ` +
-  "<" +
-  "/script>"
+  '<' +
+  '/script>'
 
 export const code3 =
   `
@@ -60,8 +60,8 @@ export default {
   },
 }
 ` +
-  "<" +
-  "/script>"
+  '<' +
+  '/script>'
 
 export const code4 =
   `
@@ -94,8 +94,8 @@ export default {
   },
 }
 ` +
-  "<" +
-  "/script>"
+  '<' +
+  '/script>'
 
 export const code5 =
   `
@@ -129,5 +129,5 @@ export default {
   },
 }
 ` +
-  "<" +
-  "/script>"
+  '<' +
+  '/script>'

@@ -15,17 +15,17 @@
 </template>
 
 <script>
-import Header from "./components/Header.vue"
-import Menu from "./components/Menu.vue"
+import Header from './components/Header.vue'
+import Menu from './components/Menu.vue'
 export default {
-  name: "Layout",
+  name: 'Layout',
   components: {
     Header,
-    Menu,
+    Menu
   },
   mounted() {
     this.layoutInit()
-    window.addEventListener("resize", this.layoutInit)
+    window.addEventListener('resize', this.layoutInit)
   },
   methods: {
     layoutInit() {
@@ -35,8 +35,8 @@ export default {
         containerRef.style.margin = `0 ${marginVal}px`
         this.$refs.asideRef.$el.style.left = `${marginVal}px`
       }
-    },
-  },
+    }
+  }
 }
 </script>
 
