@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h4 class="title">{{ typeShow }}</h4>
+    <h4 class="title">{{ selfTypeText || typeShow }}</h4>
     <el-table :data="tableData" style="width: 100%">
       <el-table-column
         v-for="item in showColumns"
@@ -9,10 +9,12 @@
         :label="item.label"
         :min-width="item.width"
       >
-        <template #default="{ row }">
-          <span :class="{ different: row.different }">{{
-            row[item.prop]
-          }}</span>
+        <template #default="{ row, $index }">
+          <slot :row="row" :index="$index" :columItem="item">
+            <span :class="{ different: row.different }">{{
+              row[item.prop]
+            }}</span>
+          </slot>
         </template>
       </el-table-column>
     </el-table>
@@ -31,9 +33,9 @@ export default {
       type: Array,
       default: () => []
     },
-    typeShow: {
+    selfTypeText: {
       type: String,
-      default: '属性列表'
+      default: ''
     }
   },
   computed: {
@@ -42,6 +44,7 @@ export default {
         case 'attr':
           return this.attrColumns
         case 'method':
+        case 'refMethod':
           return this.methodColumns
         case 'slot':
           return this.slotColumns
@@ -49,6 +52,20 @@ export default {
           break
       }
       return this.columns.filter((item) => this.type === item.type)
+    },
+    typeShow() {
+      switch (this.type) {
+        case 'attr':
+          return '属性列表'
+        case 'method':
+          return '事件列表'
+        case 'refMethod':
+          return 'ref事件列表'
+        case 'slot':
+          return '插槽列表'
+        default:
+          return this.selfTypeText
+      }
     }
   },
   data() {

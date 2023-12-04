@@ -5,7 +5,9 @@ import './plugins/element.js'
 
 import tools_ui from './components/index'
 import customCom from './components/Custom'
+import plugins from './plugins/index'
 
+Vue.use(plugins)
 Vue.use(tools_ui)
 Vue.use(customCom)
 Vue.config.productionTip = false

@@ -9,8 +9,7 @@ created() {
 }
 `
 
-export const code2 =
-  `
+export const code2 = `
 <template>
   <ClMuchSelect v-model="val" :options="options"></ClMuchSelect>
 </template>
@@ -32,12 +31,10 @@ export default {
     }
   },
 }
-` +
-  '<' +
-  '/script>'
+</script>
+`
 
-export const code3 =
-  `
+export const code3 = `
 <template>
   <ClMuchSelect v-model="val" :options="options"></ClMuchSelect>
 </template>
@@ -59,12 +56,10 @@ export default {
     }
   },
 }
-` +
-  '<' +
-  '/script>'
+</script>
+`
 
-export const code4 =
-  `
+export const code4 = `
 <template>
   <ClMuchSelect
     key="1"
@@ -93,12 +88,10 @@ export default {
     }
   },
 }
-` +
-  '<' +
-  '/script>'
+</script>
+`
 
-export const code5 =
-  `
+export const code5 = `
 <template>
   <ClMuchSelect
     key="1"
@@ -128,6 +121,5 @@ export default {
     }
   },
 }
-` +
-  '<' +
-  '/script>'
+</script>
+`

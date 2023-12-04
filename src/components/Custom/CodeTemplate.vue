@@ -6,7 +6,19 @@
     <el-collapse-transition>
       <div class="code_box" v-show="!hide">
         <div class="code_text"><slot name="codeText"></slot></div>
-        <div class="code_show"><slot name="codeShow"></slot></div>
+        <div class="code_show">
+          <el-button
+            class="copy_btn"
+            size="mini"
+            type="primary"
+            plain
+            @click="copyCode"
+            >复制</el-button
+          >
+          <pre
+            class="language-html"
+          ><code class="language-html" ref="codeRefs"><slot name="codeShow"></slot></code></pre>
+        </div>
       </div>
     </el-collapse-transition>
     <div
@@ -21,6 +33,7 @@
 </template>
 
 <script>
+import { copyData } from '../../utils/commonFun'
 export default {
   name: 'CodeTemplate',
   props: {
@@ -32,6 +45,19 @@ export default {
   data() {
     return {
       hide: true
+    }
+  },
+  methods: {
+    copyCode() {
+      const codeText = this.$refs.codeRefs.innerText
+      copyData(codeText)
+    }
+  },
+  watch: {
+    hide(flag) {
+      if (!flag) {
+        window.Prism.highlightAll()
+      }
     }
   }
 }
@@ -49,8 +75,14 @@ export default {
       color: #5e6d82;
     }
     .code_show {
+      position: relative;
       padding: 0 20px;
       color: #5e6d82;
+      .copy_btn {
+        position: absolute;
+        top: 5px;
+        right: 25px;
+      }
     }
   }
   .toggle {

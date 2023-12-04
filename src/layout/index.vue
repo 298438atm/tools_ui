@@ -64,6 +64,6 @@ export default {
 }
 
 .router_view {
-  max-height: calc(100vh - 120px);
+  max-height: calc(100vh - 150px);
 }
 </style>

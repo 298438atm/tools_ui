@@ -18,6 +18,17 @@ code {
   border-radius: 4px;
   font-size: 12px;
 }
+
+.language-html {
+  color: black;
+  background: #fafafa !important;
+}
+pre.language-html {
+  padding: 0;
+}
+code.language-html {
+  border: none;
+}
 p {
   font-size: 14px;
   color: #5e6d82;

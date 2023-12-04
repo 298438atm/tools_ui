@@ -9,7 +9,7 @@
   >
     <el-input
       v-model="iconModel"
-      ref="input"
+      ref="elInput"
       :placeholder="placeholder"
       :clearable="clearable"
       :disabled="disabled"
@@ -163,7 +163,7 @@ export default {
     ) {
       this.initIconfont()
     }
-    dispatch(this, 'ClIconSelect')
+    dispatch(this, 'elInput')
   },
   data() {
     return {
@@ -180,11 +180,11 @@ export default {
       const timer = setTimeout(() => {
         iEle.remove()
         clearTimeout(timer)
-      }, 100)
+      }, 10)
     },
     inputFocus() {
       if (this.selectonly) {
-        this.$refs.input.blur()
+        this.$refs.elInput.blur()
       }
     },
     // 判断是否是elementui的icon

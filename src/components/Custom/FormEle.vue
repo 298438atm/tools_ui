@@ -47,31 +47,48 @@
     ></el-option>
   </el-select>
   <el-date-picker
-    v-else-if="formType === 'date'"
+    v-else-if="formType === 'datePicker'"
     v-model="localValue"
     v-bind="$attrs"
     v-on="$listeners"
+    :placeholder="placeholder"
+    :endPlaceholder="endPlaceholder"
+    :startPlaceholder="startPlaceholder"
   >
   </el-date-picker>
   <el-time-select
-    v-else-if="formType === 'time'"
+    v-else-if="formType === 'timeSelect'"
     v-model="localValue"
     v-bind="$attrs"
     v-on="$listeners"
+    :placeholder="placeholder"
   >
   </el-time-select>
+  <el-time-picker
+    v-else-if="formType === 'timePicker'"
+    v-model="localValue"
+    v-bind="$attrs"
+    v-on="$listeners"
+    :placeholder="placeholder"
+    :endPlaceholder="endPlaceholder"
+    :startPlaceholder="startPlaceholder"
+  >
+  </el-time-picker>
   <el-switch
     v-else-if="formType === 'switch'"
     v-model="localValue"
     v-bind="$attrs"
+    :placeholder="placeholder"
   >
   </el-switch>
   <el-cascader
     v-else-if="formType === 'cascader'"
     v-model="localValue"
     :options="options"
+    ref="cascader"
     v-bind="$attrs"
     v-on="$listeners"
+    :placeholder="placeholder"
   ></el-cascader>
 </template>
 
@@ -103,7 +120,6 @@ export default {
         return this.modelValue
       },
       set(val) {
-        console.log(val)
         this.$emit('editModelValue', val)
       }
     },
@@ -121,14 +137,30 @@ export default {
       return this.$attrs.rangeSeparator || '至'
     },
     startPlaceholder() {
-      return this.$attrs.startPlaceholder || '开始时间'
+      if (this.formType === 'datePicker') {
+        return this.$attrs.startPlaceholder || '开始日期'
+      } else {
+        return this.$attrs.startPlaceholder || '开始时间'
+      }
     },
     endPlaceholder() {
-      return this.$attrs.endPlaceholder || '结束时间'
+      if (this.formType === 'datePicker') {
+        return this.$attrs.startPlaceholder || '结束日期'
+      } else {
+        return this.$attrs.startPlaceholder || '结束时间'
+      }
     }
   },
   data() {
     return {}
+  },
+  methods: {
+    // 获取级联组件的回显值
+    getCasLabelcader() {
+      this.$nextTick(() => {
+        return this.$refs.cascader?.inputValue
+      })
+    }
   }
 }
 </script>
