@@ -161,7 +161,6 @@ export default {
       this.$refs.formRules.validateField(
         [`tableData.${index}.dictDataName`, `tableData.${index}.dictDataCode`],
         (errMsg) => {
-          console.log(errMsg, 'err')
           if (errMsg === '') {
             passNum++
           }

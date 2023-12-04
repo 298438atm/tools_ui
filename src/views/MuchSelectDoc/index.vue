@@ -20,6 +20,7 @@
         :options="options"
         ref="ClMuchSelect"
       >
+        <template #empty>12323</template>
       </ClMuchSelect>
       <template #codeText>
         <span
@@ -94,10 +95,8 @@
         </pre>
       </template>
     </CodeTemplate>
-    <CustomAttrTable
-      typeShow="ClMuchSelects属性列表"
-      :tableData="attrList"
-    ></CustomAttrTable>
+    <CustomAttrTable :tableData="attrList"></CustomAttrTable>
+    <CustomAttrTable :tableData="methodList" type="method"></CustomAttrTable>
     <CustomAttrTable
       typeShow="插槽列表"
       type="slot"
@@ -273,11 +272,53 @@ export default {
           default: '默认会有一个过滤函数，函数会以optionLabel作为过滤字段'
         }
       ],
+      methodList: [
+        {
+          eventName: 'change',
+          des: '选中值发生变化时触发',
+          cbParams: '目前的选中值'
+        },
+        {
+          eventName: 'visible-change',
+          des: '下拉框出现/隐藏时触发',
+          cbParams: '出现则为 true，隐藏则为 false'
+        },
+        {
+          eventName: 'remove-tag',
+          des: '多选模式下移除tag时触发',
+          cbParams: '移除的tag值'
+        },
+        {
+          eventName: 'clear',
+          des: '可清空的单选模式下用户点击清空按钮时触发',
+          cbParams: '-'
+        },
+        {
+          eventName: 'blur',
+          des: '当 input 失去焦点时触发',
+          cbParams: 'event'
+        },
+        {
+          eventName: 'focus',
+          des: '当 input 获得焦点时触发',
+          cbParams: 'event'
+        }
+      ],
       slotList: [
         {
           slotName: 'option',
           des: '下拉数据的插槽，可自定义下拉列表数据的展示',
           slotData: 'data：当前条下拉数据'
+        },
+        {
+          slotName: 'prefix',
+          des: 'Select 组件头部内容',
+          slotData: '-'
+        },
+        {
+          slotName: 'empty',
+          des: '无选项时的列表',
+          slotData: '-'
         }
       ],
       activeName: 'elemetUi',

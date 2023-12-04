@@ -17,7 +17,8 @@
             v-model="val1"
             style="width: 100%"
             placeholder="showSlot为prepend（默认）"
-          ></ClIconSelect>
+          >
+          </ClIconSelect>
         </el-col>
         <el-col :span="12">
           <ClIconSelect
@@ -42,7 +43,8 @@
             style="width: 100%"
             showSlot="suffix"
             placeholder="showSlot为suffix"
-          ></ClIconSelect>
+          >
+          </ClIconSelect>
         </el-col>
       </el-row>
 
@@ -138,10 +140,10 @@ export default {
         },
         {
           params: 'showSlot',
-          des: '是否展示选中图标',
+          des: '是否展示选中图标，设置false则不展示图标，prefix，suffix，prepend，append会在input对应的插槽位置展示，设该值后就不能在设置相同名称的插槽',
           type: 'string / boolean',
           select: 'false / prefix / suffix / prepend / append',
-          default: '—'
+          default: 'prepend'
         },
         {
           params: 'maxWidth',
@@ -252,14 +254,24 @@ export default {
       ],
       methodList: [
         {
+          eventName: 'iconSelected',
+          des: '选中图标时触发',
+          cbParams: '选中的图标'
+        },
+        {
+          eventName: 'iconChange',
+          des: '图标变化时触发',
+          cbParams: '变化的图标'
+        },
+        {
           eventName: 'blur',
           des: '在 Input 失去焦点时触发',
-          cbParams: '(event: Event)'
+          cbParams: 'event'
         },
         {
           eventName: 'focus',
           des: '在 Input 获得焦点时触发',
-          cbParams: '(event: Event)'
+          cbParams: 'event'
         },
         {
           eventName: 'change',
@@ -274,12 +286,7 @@ export default {
         {
           eventName: 'clear',
           des: '在点击由 clearable 属性生成的清空按钮时触发',
-          cbParams: '—'
-        },
-        {
-          eventName: 'selected',
-          des: '选中图标的时候触发',
-          cbParams: '选中的图标'
+          cbParams: '-'
         }
       ],
       slotList: [

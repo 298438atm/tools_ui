@@ -21,11 +21,17 @@
       v-on="$listeners"
     >
       <!-- 图标展示 -->
-      <template :slot="showSlot" v-if="iconModel && icons.includes(iconModel)">
+      <template
+        :slot="showSlot"
+        v-if="iconModel && icons.includes(iconModel) && showSlot"
+      >
         <i
           :class="[iconModel, isElemenUiIcon(iconModel) ? '' : 'iconfont']"
           class="cl_icon_select"
         ></i>
+      </template>
+      <template v-for="(key, val) in $slots" #[val]>
+        <slot :name="val"></slot>
       </template>
     </el-input>
     <el-dropdown-menu slot="dropdown" ref="dropdownMenu">
@@ -194,7 +200,7 @@ export default {
     // 图标选中
     iconSelected(icon = undefined) {
       if (icon) {
-        this.$emit('selected', icon)
+        this.$emit('iconSelected', icon)
       }
       this.iconModel = icon
       if (this.hideOnClick) {
@@ -232,15 +238,8 @@ export default {
     }
   },
   watch: {
-    fontClassUrl: {
-      immediate: true,
-      handler(val) {
-        if (val) {
-          this.$nextTick(() => {
-            // this.linkEleToggle("create")
-          })
-        }
-      }
+    iconModel(val) {
+      this.$emit('iconChange', val)
     },
     iconList: {
       deep: true,
@@ -291,26 +290,22 @@ export default {
 /deep/ .el-input__prefix {
   left: 0;
 }
-/deep/ .el-input__prefix,
-/deep/ .el-input__suffix {
-  width: 30px;
-  i:not(.el-input__clear) {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .el-input__clear {
-    position: absolute;
-    top: 55%;
-    transform: translate(-50%, -50%);
-    left: 50%;
-  }
-}
 .el-input:hover /deep/ .el-input__suffix .cl_icon_select {
   display: none;
 }
 .cl_icon_select {
   color: var(--color) !important;
+  width: 30px;
+  text-align: center;
+}
+
+/deep/ .el-input__suffix-inner,
+/deep/ .el-input__prefix {
+  line-height: 2.4;
+}
+
+/deep/ .el-input-group__prepend,
+/deep/ .el-input-group__append {
+  padding: 0 10px;
 }
 </style>
