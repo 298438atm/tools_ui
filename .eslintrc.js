@@ -17,6 +17,9 @@ module.exports = {
     semi: 'off',
     quotes: 'off',
     'vue/multi-word-component-names': 'off',
-    'prettier/prettier': ['error', { endOfLine: 'auto', trailingComma: 'none' }]
+    'prettier/prettier': [
+      'error',
+      { endOfLine: 'auto', trailingComma: 'none', singleQuote: true }
+    ]
   }
 }
