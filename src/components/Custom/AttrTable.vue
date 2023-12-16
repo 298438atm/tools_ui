@@ -31,18 +31,29 @@ export default {
       type: Array,
       default: () => [],
     },
+    typeShow: {
+      type: String,
+      default: "属性列表",
+    },
   },
   computed: {
-    typeShow() {
-      return this.type === "attr" ? "属性列表" : "事件列表"
-    },
     showColumns() {
+      switch (this.type) {
+        case "attr":
+          return this.attrColumns
+        case "method":
+          return this.methodColumns
+        case "slot":
+          return this.slotColumns
+        default:
+          break
+      }
       return this.columns.filter((item) => this.type === item.type)
     },
   },
   data() {
     return {
-      columns: [
+      attrColumns: [
         {
           prop: "params",
           label: "参数",
@@ -50,21 +61,9 @@ export default {
           width: "100px",
         },
         {
-          prop: "eventName",
-          label: "事件名称",
-          type: "function",
-          width: "100",
-        },
-        {
           prop: "des",
           label: "说明",
           type: "attr",
-          width: "200",
-        },
-        {
-          prop: "cbParams",
-          label: "回调参数",
-          type: "function",
           width: "200",
         },
         {
@@ -77,13 +76,47 @@ export default {
           prop: "select",
           label: "可选值",
           type: "attr",
-          width: "100",
+          width: "120",
         },
         {
           prop: "default",
           label: "默认值",
           type: "attr",
           width: "100",
+        },
+      ],
+      methodColumns: [
+        {
+          prop: "eventName",
+          label: "事件名称",
+          width: "100",
+        },
+        {
+          prop: "des",
+          label: "说明",
+          width: "200",
+        },
+        {
+          prop: "cbParams",
+          label: "参数",
+          width: "200",
+        },
+      ],
+      slotColumns: [
+        {
+          prop: "slotName",
+          label: "插槽名称",
+          width: "100",
+        },
+        {
+          prop: "des",
+          label: "说明",
+          width: "200",
+        },
+        {
+          prop: "slotData",
+          label: "作用域插槽数据",
+          width: "200",
         },
       ],
     }

@@ -11,7 +11,7 @@
     :noDataText="emptyText"
     v-bind="$attrs"
     v-on="$listeners"
-    ref="MuchSelect"
+    ref="ClMuchSelect"
     @remove-tag="removeTag"
     @change="selectChange"
   >
@@ -23,15 +23,17 @@
       :key="item[optionValue]"
       :value="item[optionValue]"
       :label="item[optionLabel]"
-      :disabled="optionDisabled"
-    ></el-option>
+    >
+      <slot name="option" :data="item"></slot>
+    </el-option>
     <span ref="endOption"></span>
   </el-select>
 </template>
 
 <script>
+import { dispatch } from "../../utils/dispatch"
 export default {
-  name: "MuchSelect",
+  name: "ClMuchSelect",
   npmUp: true,
   props: {
     value: null,
@@ -65,11 +67,6 @@ export default {
       type: Number,
       default: 20,
     },
-    // // 无数据时的文本
-    // noDataText: {
-    //   type: String,
-    //   default: "无1数据",
-    // },
   },
   data() {
     return {
@@ -87,12 +84,15 @@ export default {
       observer: null,
       // 是否处于查询
       isFilter: false,
+      ClMuchSelect: null,
     }
   },
   mounted() {
     this.$nextTick(() => {
       this.endEle = this.$refs.endOption
       this.endEle ? this.createObserver() : null
+      this.ClMuchSelect = this.$refs.ClMuchSelect
+      dispatch(this.$refs.ClMuchSelect)
     })
   },
   beforeDestroy() {
@@ -111,6 +111,9 @@ export default {
     clearable() {
       return this.$attrs.clearable === false ? false : true
     },
+    multiple() {
+      return this.$attrs.multiple === false ? false : true
+    },
     // 没有数据或者没有查询到数据的时候的文本展示
     emptyText() {
       // 开启查询且原始列表有值且展示列表无数据则表示没有筛选出数据
@@ -128,7 +131,7 @@ export default {
       this.filterOption = []
       if (this.value) {
         // 如果是多选且有值需要回显
-        if (this.$attrs.multiple && this.value.length > 0) {
+        if (this.multiple && this.value.length > 0) {
           let ids = []
           let optionLength = this.copyOriginalList.length
           for (let index = 0; index < optionLength; index++) {
@@ -147,7 +150,9 @@ export default {
               this.copyOriginalList.splice(i, 1)[0]
             )
           })
-        } else if (["string", "number"].includes(typeof this.val)) {
+        } else if (
+          ["string", "number", "boolean"].includes(typeof this.value)
+        ) {
           let index = this.copyOriginalList.findIndex(
             (item) => item[this.optionValue] === this.value
           )

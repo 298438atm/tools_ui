@@ -12,15 +12,21 @@ const routes = [
     children: [
       {
         path: "/index",
-        component: () => import("@/views/Introduction"),
+        component: () => import("@/views/IntroductionDoc"),
         meta: { title: "引言" },
         name: "Introduction",
       },
       {
         path: "/Muchselect",
-        component: () => import("@/views/Muchselect/index"),
+        component: () => import("@/views/MuchSelectDoc"),
         meta: { title: "长下拉数据" },
         name: "Muchselect",
+      },
+      {
+        path: "/IconSelectDoc",
+        component: () => import("@/views/IconSelectDoc"),
+        meta: { title: "图标下拉" },
+        name: "IconSelectDoc",
       },
     ],
   },

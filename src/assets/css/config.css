@@ -31,3 +31,7 @@ pre {
   display: inline-block;
   margin: -2px 4px 0 4px;
 }
+
+.el-tag {
+  margin: 0 5px 5px 0;
+}

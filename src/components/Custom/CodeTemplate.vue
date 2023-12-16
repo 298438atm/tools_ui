@@ -1,7 +1,7 @@
 <template>
   <el-card>
     <template #header>
-      <slot name="header"></slot>
+      <slot></slot>
     </template>
     <el-collapse-transition>
       <div class="code_box" v-show="!hide">
@@ -9,7 +9,11 @@
         <div class="code_show"><slot name="codeShow"></slot></div>
       </div>
     </el-collapse-transition>
-    <div :class="hide ? 'active toggle' : 'toggle'" @click="hide = !hide">
+    <div
+      v-if="$slots.codeText || $slots.codeShow"
+      :class="hide ? 'active toggle' : 'toggle'"
+      @click="hide = !hide"
+    >
       <i :class="hide ? 'el-icon-caret-bottom' : 'el-icon-caret-top'"></i>
       {{ hide ? "显示代码" : "隐藏代码" }}
     </div>
@@ -19,6 +23,12 @@
 <script>
 export default {
   name: "CodeTemplate",
+  props: {
+    hideToggleBtn: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       hide: true,
