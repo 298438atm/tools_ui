@@ -4,6 +4,7 @@
  -->
 <template>
   <el-select
+    ref="elSelect"
     :value="value"
     :filter-method="selfFilter"
     :filterable="filterable"
@@ -11,9 +12,9 @@
     :noDataText="emptyText"
     v-bind="$attrs"
     v-on="$listeners"
-    ref="MuchSelect"
     @remove-tag="removeTag"
     @change="selectChange"
+    @visible-change="visibleChange"
   >
     <template v-for="(value, name) in $slots" #[name]>
       <slot :name="name"> </slot>
@@ -23,53 +24,45 @@
       :key="item[optionValue]"
       :value="item[optionValue]"
       :label="item[optionLabel]"
-      :disabled="optionDisabled"
-    ></el-option>
-    <span ref="endOption"></span>
+    >
+      <slot name="option" :data="item"></slot>
+    </el-option>
+    <span ref="endOption" v-show="selectVisible"></span>
   </el-select>
 </template>
 
 <script>
+import { dispatch } from '../../utils/dispatch'
 export default {
-  name: "MuchSelect",
+  name: 'ClMuchSelect',
   npmUp: true,
   props: {
     value: null,
     // 接口拿到的所有数据
     options: {
       type: Array,
-      default: () => [],
+      default: () => []
     },
     // 下拉label
     optionLabel: {
       type: String,
-      default: "label",
+      default: 'label'
     },
     // 用例进行存储的字段
     optionValue: {
       type: String,
-      default: "value",
-    },
-    // 选项禁用
-    optionDisabled: {
-      type: Boolean,
-      default: false,
+      default: 'value'
     },
     // 第一次展示的条数
     showListNum: {
       type: Number,
-      default: 20,
+      default: 20
     },
     // 一次加载的条数
     loadListNum: {
       type: Number,
-      default: 20,
-    },
-    // // 无数据时的文本
-    // noDataText: {
-    //   type: String,
-    //   default: "无1数据",
-    // },
+      default: 20
+    }
   },
   data() {
     return {
@@ -87,12 +80,16 @@ export default {
       observer: null,
       // 是否处于查询
       isFilter: false,
+      ClMuchSelect: null,
+      selectVisible: false
     }
   },
   mounted() {
     this.$nextTick(() => {
       this.endEle = this.$refs.endOption
       this.endEle ? this.createObserver() : null
+      this.ClMuchSelect = this.$refs.ClMuchSelect
+      dispatch(this, 'elSelect')
     })
   },
   beforeDestroy() {
@@ -111,6 +108,9 @@ export default {
     clearable() {
       return this.$attrs.clearable === false ? false : true
     },
+    multiple() {
+      return this.$attrs.multiple === false ? false : true
+    },
     // 没有数据或者没有查询到数据的时候的文本展示
     emptyText() {
       // 开启查询且原始列表有值且展示列表无数据则表示没有筛选出数据
@@ -119,7 +119,7 @@ export default {
       } else {
         return this.$attrs.noDataText
       }
-    },
+    }
   },
   methods: {
     // 初始化下拉列表
@@ -128,7 +128,7 @@ export default {
       this.filterOption = []
       if (this.value) {
         // 如果是多选且有值需要回显
-        if (this.$attrs.multiple && this.value.length > 0) {
+        if (this.multiple && this.value.length > 0) {
           let ids = []
           let optionLength = this.copyOriginalList.length
           for (let index = 0; index < optionLength; index++) {
@@ -147,7 +147,9 @@ export default {
               this.copyOriginalList.splice(i, 1)[0]
             )
           })
-        } else if (["string", "number"].includes(typeof this.val)) {
+        } else if (
+          ['string', 'number', 'boolean'].includes(typeof this.value)
+        ) {
           let index = this.copyOriginalList.findIndex(
             (item) => item[this.optionValue] === this.value
           )
@@ -162,25 +164,18 @@ export default {
       }
       this.showOptions = this.copyOriginalList.slice(0, this.showListNum)
     },
-    // 创建观察器
-    createObserver() {
-      this.observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            this.addOption()
-          }
-        })
-      })
-      this.observer.observe(this.endEle)
-    },
-    // 销毁观察者
-    delObserver() {
-      if (this.observer) {
-        this.observer.unobserve(this.endEle)
+    // 解决select出现立即触发addOption的bug
+    visibleChange(flag) {
+      if (flag) {
+        setTimeout(() => {
+          this.selectVisible = flag
+        }, 100)
+      } else {
+        this.selectVisible = false
       }
     },
     selectChange(val) {
-      this.$emit("input", val)
+      this.$emit('input', val)
     },
     // 重写过滤方法
     selfFilter(val) {
@@ -192,21 +187,24 @@ export default {
         this.filterOption = []
       }
       // 如果需要使用filterMethod属性自定义搜索，需要返回一个值作为搜索后的结果接收。
-      if (typeof this.$attrs["filter-method"] === "function") {
-        this.filterOption = this.$attrs["filter-method"](
+      if (typeof this.$attrs['filter-method'] === 'function') {
+        this.filterOption = this.$attrs['filter-method'](
           val,
           this.copyOriginalList
         )
       } else {
         // 默认按照输入的文本进行过滤
-        this.filterOption = this.copyOriginalList.filter((item) =>
-          item[this.optionLabel].includes(val)
-        )
+        this.filterOption = this.copyOriginalList.filter((item) => {
+          return String(item[this.optionLabel]).includes(val)
+        })
       }
       this.showOptions = this.filterOption.slice(0, this.showListNum)
     },
     // 到底部新加数据
     addOption() {
+      if (!this.selectVisible) {
+        return
+      }
       let listArr = []
       if (this.isFilter) {
         listArr = this.filterOption
@@ -239,6 +237,23 @@ export default {
         this.initList()
       })
     },
+    // 创建观察器
+    createObserver() {
+      this.observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            this.addOption()
+          }
+        })
+      })
+      this.observer.observe(this.endEle)
+    },
+    // 销毁观察者
+    delObserver() {
+      if (this.observer) {
+        this.observer.unobserve(this.endEle)
+      }
+    }
   },
   watch: {
     options: {
@@ -248,8 +263,8 @@ export default {
         // 将原生数据拷贝到本地
         this.copyOriginalList = JSON.parse(JSON.stringify(value))
         this.initList()
-      },
-    },
-  },
+      }
+    }
+  }
 }
 </script>

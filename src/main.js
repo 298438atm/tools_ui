@@ -1,16 +1,18 @@
-import Vue from "vue"
-import App from "./App.vue"
-import router from "./router"
-import "./plugins/element.js"
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import './plugins/element.js'
 
-import tools_ui from "./components/index"
-import customCom from "./components/Custom"
+import tools_ui from './components/index'
+import customCom from './components/Custom'
+import plugins from './plugins/index'
 
-Vue.use(tools_ui.MuchSelect)
+Vue.use(plugins)
+Vue.use(tools_ui)
 Vue.use(customCom)
 Vue.config.productionTip = false
 
 new Vue({
   router,
-  render: (h) => h(App),
-}).$mount("#app")
+  render: (h) => h(App)
+}).$mount('#app')

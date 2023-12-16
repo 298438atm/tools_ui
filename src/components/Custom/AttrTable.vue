@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h4 class="title">{{ typeShow }}</h4>
+    <h4 class="title">{{ selfTypeText || typeShow }}</h4>
     <el-table :data="tableData" style="width: 100%">
       <el-table-column
         v-for="item in showColumns"
@@ -9,10 +9,12 @@
         :label="item.label"
         :min-width="item.width"
       >
-        <template #default="{ row }">
-          <span :class="{ different: row.different }">{{
-            row[item.prop]
-          }}</span>
+        <template #default="{ row, $index }">
+          <slot :row="row" :index="$index" :columItem="item">
+            <span :class="{ different: row.different }">{{
+              row[item.prop]
+            }}</span>
+          </slot>
         </template>
       </el-table-column>
     </el-table>
@@ -21,73 +23,121 @@
 
 <script>
 export default {
-  name: "CustomAttrTable",
+  name: 'CustomAttrTable',
   props: {
     type: {
       type: String,
-      default: "attr",
+      default: 'attr'
     },
     tableData: {
       type: Array,
-      default: () => [],
+      default: () => []
     },
+    selfTypeText: {
+      type: String,
+      default: ''
+    }
   },
   computed: {
-    typeShow() {
-      return this.type === "attr" ? "属性列表" : "事件列表"
-    },
     showColumns() {
+      switch (this.type) {
+        case 'attr':
+          return this.attrColumns
+        case 'method':
+        case 'refMethod':
+          return this.methodColumns
+        case 'slot':
+          return this.slotColumns
+        default:
+          break
+      }
       return this.columns.filter((item) => this.type === item.type)
     },
+    typeShow() {
+      switch (this.type) {
+        case 'attr':
+          return '属性列表'
+        case 'method':
+          return '事件列表'
+        case 'refMethod':
+          return 'ref事件列表'
+        case 'slot':
+          return '插槽列表'
+        default:
+          return this.selfTypeText
+      }
+    }
   },
   data() {
     return {
-      columns: [
+      attrColumns: [
         {
-          prop: "params",
-          label: "参数",
-          type: "attr",
-          width: "100px",
+          prop: 'params',
+          label: '参数',
+          type: 'attr',
+          width: '100px'
         },
         {
-          prop: "eventName",
-          label: "事件名称",
-          type: "function",
-          width: "100",
+          prop: 'des',
+          label: '说明',
+          type: 'attr',
+          width: '200'
         },
         {
-          prop: "des",
-          label: "说明",
-          type: "attr",
-          width: "200",
+          prop: 'type',
+          label: '类型',
+          type: 'attr',
+          width: '100'
         },
         {
-          prop: "cbParams",
-          label: "回调参数",
-          type: "function",
-          width: "200",
+          prop: 'select',
+          label: '可选值',
+          type: 'attr',
+          width: '120'
         },
         {
-          prop: "type",
-          label: "类型",
-          type: "attr",
-          width: "100",
-        },
-        {
-          prop: "select",
-          label: "可选值",
-          type: "attr",
-          width: "100",
-        },
-        {
-          prop: "default",
-          label: "默认值",
-          type: "attr",
-          width: "100",
-        },
+          prop: 'default',
+          label: '默认值',
+          type: 'attr',
+          width: '100'
+        }
       ],
+      methodColumns: [
+        {
+          prop: 'eventName',
+          label: '事件名称',
+          width: '100'
+        },
+        {
+          prop: 'des',
+          label: '说明',
+          width: '200'
+        },
+        {
+          prop: 'cbParams',
+          label: '参数',
+          width: '200'
+        }
+      ],
+      slotColumns: [
+        {
+          prop: 'slotName',
+          label: '插槽名称',
+          width: '100'
+        },
+        {
+          prop: 'des',
+          label: '说明',
+          width: '200'
+        },
+        {
+          prop: 'slotData',
+          label: '作用域插槽数据',
+          width: '200'
+        }
+      ]
     }
-  },
+  }
 }
 </script>
 
